@@ -18,6 +18,7 @@ const ejs = require('ejs')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
+const session = require('express-session')
 const port = 5000
 
 global.loggedIn = null;
