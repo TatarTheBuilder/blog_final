@@ -29,13 +29,15 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(fileUpload())
 app.use('/posts/store',validateMiddleware)
 
+app.set('trust proxy', 1)
 app.use(session({
   secret: 'keyboard cat',
   saveUninitialized: true,
   cookie: { 
     maxAge: 120000,
     secure: true,
-    httpOnly: true
+    httpOnly: true,
+    sameSite: 'none'
   },
   resave: false
 }))
