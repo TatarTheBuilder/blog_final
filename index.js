@@ -28,8 +28,15 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(fileUpload())
 app.use('/posts/store',validateMiddleware)
 
-app.use(expressSession({
-secret: 'keyboard cat'
+app.use(session({
+  secret: 'keyboard cat',
+  saveUninitialized: true,
+  cookie: { 
+    maxAge: 120000,
+    secure: true,
+    httpOnly: true
+  },
+  resave: false
 }))
 
 app.use("*", (req, res, next) => {
